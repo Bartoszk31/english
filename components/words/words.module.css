@@ -1,0 +1,23 @@
+.wordSpan {
+    padding: 16px;
+    border-radius: 4px;
+    background-color: #aaf;
+    margin-right: 8px;
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.wordSpan:hover {
+    cursor: pointer;
+}
+
+.wordsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 16px;
+}
+
+.pointsContainer {
+    font-size: 24px;
+    padding-top: 16px;
+}

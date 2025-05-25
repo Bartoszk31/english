@@ -1,0 +1,12 @@
+.linkButton {
+    padding: 16px;
+    border-radius: 4px;
+    background-color: #aaf;
+    margin-right: 8px;
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.pageContainer {
+    padding: 24px;
+}
