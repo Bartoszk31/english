@@ -32,9 +32,7 @@ const Words = () => {
         { img: 'u01-p16', word: 'find out information' },
     ];
 
-    useEffect(() => {
-        chooseWord();
-    }, []);
+
 
     const chooseWord = () => {
         const getRandomWordIndex = () => {
@@ -74,10 +72,13 @@ const Words = () => {
         }
 
         addRandomIndex();
-
     }
 
-    const handleClick = (id) => () => {
+    useEffect(() => {
+        chooseWord();
+    }, []);
+
+    const handleClick = (id: string) => () => {
         if (word?.img === id) {
             setPoints(points+1);
             setAnswerInfo('Dobrze');
