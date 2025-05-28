@@ -2,10 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import styles from './words.module.css';
-
-function randomIntFromInterval(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
+import mainStyles from '@/app/main.module.css';
+import { getStorePoints, setStorePoints } from '@/lib/storePoints';
+import getRandomNumber from '@/lib/getRandomNumber';
 
 const wordsSets = [
     [
@@ -118,17 +117,18 @@ type WordsType = {
 }
 
 const Words = ({ unitId }: WordsType) => {
+    const storageKey = `c3_e_w_${unitId}`;
     const words = wordsSets[unitId - 1];
     const [points, setPoints] = useState(0);
-    const [word, setWord] = useState<{ img: string, word: string }>();
     const [answerInfo, setAnswerInfo] = useState('');
+    const [word, setWord] = useState<{ img: string, word: string }>();
     const [answers, setAnswers] = useState<{ img: string, word: string }[]>([]);
     const [currentWordIndex, setCurrentWordIndex] = useState(0);
 
 
     const chooseWord = () => {
         const getRandomWordIndex = () => {
-            const randomWordIndex = randomIntFromInterval(0, words.length - 1);
+            const randomWordIndex = getRandomNumber(0, words.length - 1);
 
             if (randomWordIndex === currentWordIndex) {
                 getRandomWordIndex();
@@ -147,8 +147,7 @@ const Words = ({ unitId }: WordsType) => {
 
         const addRandomIndex = () => {
             if (answersIndexes.length < 4) {
-                console.log('mniej niż cztery')
-                const randomIndex = randomIntFromInterval(0, words.length - 1);
+                const randomIndex = getRandomNumber(0, words.length - 1);
                 if (answersIndexes.includes(randomIndex)) {
                     addRandomIndex();
                 } else {
@@ -156,7 +155,6 @@ const Words = ({ unitId }: WordsType) => {
                     addRandomIndex();
                 }
             } else {
-                console.log(answersIndexes);
                 const shuffledIndexes = answersIndexes.sort(() => Math.random() - 0.5);
                 const answers = shuffledIndexes.map(i => words[i]);
                 setAnswers(answers);
@@ -167,16 +165,20 @@ const Words = ({ unitId }: WordsType) => {
     }
 
     useEffect(() => {
+        setPoints(getStorePoints(storageKey));
         chooseWord();
     }, []);
 
     const handleClick = (id: string) => () => {
         if (word?.img === id) {
-            setPoints(points+1);
+            const newPoints = points+1;
+            setPoints(newPoints);
+            setStorePoints(storageKey, newPoints);
             setAnswerInfo('Dobrze');
         } else {
-            const newPoints = points - 1;
-            setPoints(newPoints < 0 ? 0 : newPoints);
+            const newPoints = (points - 1) < 0 ? 0 : (points - 1);
+            setPoints(newPoints);
+            setStorePoints(storageKey, newPoints);
             setAnswerInfo('Źle');
         }
 
@@ -185,7 +187,7 @@ const Words = ({ unitId }: WordsType) => {
 
     return (
         <div>
-            <div className={styles.pointsContainer}>
+            <div className={mainStyles.pointsContainer}>
                 {'Punkty: '}{points}{' - '}{answerInfo}
             </div>
             <div>

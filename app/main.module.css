@@ -5,8 +5,49 @@
     margin-right: 8px;
     font-size: 24px;
     margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.divider {
+    margin: 16px 0;
 }
 
 .pageContainer {
     padding: 24px;
+}
+
+.classSection {
+    margin-bottom: 32px;
+}
+
+.sectionHeader {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.pointsContainer {
+    font-size: 24px;
+    padding-top: 16px;
+}
+
+.text {
+    font-size: 24px;
+}
+
+.textContainer {
+    margin-bottom: 8px;
+}
+
+.inputAnswer {
+    font-size: 24px;
+    border: solid 2px #aaaaff;
+    border-radius: 4px;
+    width: 60px;
+    background-color: #bcffaa;
+    outline: none;
+}
+
+.inputAnswer:focus {
+    border: solid 2px #2222ff;
 }
