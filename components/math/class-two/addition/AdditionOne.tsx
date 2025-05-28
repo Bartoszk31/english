@@ -15,8 +15,10 @@ const AdditionOne = () => {
     const inputRef = useRef<HTMLInputElement>(null);
 
     const setNumbers = () => {
-        setFirstNumber(getRandomNumber(1, 20));
-        setSecondNumber(getRandomNumber(1, 20));
+        const a = getRandomNumber(1, 100);
+        const b = getRandomNumber(1, 100 - a);
+        setFirstNumber(a);
+        setSecondNumber(b);
         inputRef?.current?.focus();
     }
 

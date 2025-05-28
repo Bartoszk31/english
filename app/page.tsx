@@ -25,6 +25,7 @@ export default function Home() {
                 <Link className={styles.linkButton} href={'/class-two/math/multiplication'}>{'Mnożenie'}</Link>
                 <Link className={styles.linkButton} href={'/class-two/math/division'}>{'Dzielenie'}</Link>
                 <Link className={styles.linkButton} href={'/class-two/math/addition-one'}>{'Dodawanie 1'}</Link>
+                <Link className={styles.linkButton} href={'/class-two/math/addition-two'}>{'Dodawanie 2'}</Link>
                 <Link className={styles.linkButton} href={'/class-two/math/subtraction-one'}>{'Odejmowanie 1'}</Link>
             </div>
             <hr className={styles.divider} />

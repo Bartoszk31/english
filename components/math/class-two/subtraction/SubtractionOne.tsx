@@ -15,11 +15,23 @@ const SubtractionOne = () => {
     const inputRef = useRef<HTMLInputElement>(null);
 
     const setNumbers = () => {
-        const a = getRandomNumber(1, 20);
-        const b = getRandomNumber(1, 20);
+        const a = getRandomNumber(1, 90);
 
-        setFirstNumber(a > b ? a : b);
-        setSecondNumber(a > b ? b : a);
+        const getNumberWithLowerUnits = (n: number) => {
+            const units = n % 10;
+            const randomLowerNumber = getRandomNumber(1, n);
+
+            if (randomLowerNumber % 10 > units || randomLowerNumber === n) {
+                return getNumberWithLowerUnits(n);
+            }
+
+            return randomLowerNumber;
+        }
+
+        const b = getNumberWithLowerUnits(a);
+
+        setFirstNumber(a);
+        setSecondNumber(b);
         inputRef?.current?.focus();
     }
 

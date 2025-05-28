@@ -51,3 +51,28 @@
 .inputAnswer:focus {
     border: solid 2px #2222ff;
 }
+
+.additionTable {
+
+}
+
+.additionTableCell {
+    border: solid 1px #aaa;
+    font-size: 48px;
+    width: 56px;
+    height: 56px;
+    text-align: center;
+}
+
+.additionTableInput {
+    font-size: 48px;
+    width: 56px;
+    height: 56px;
+    background-color: #bcffaa;
+    outline: none;
+    text-align: center;
+}
+
+.additionTableSummaryRow {
+    border-bottom: solid 2px #222;
+}
